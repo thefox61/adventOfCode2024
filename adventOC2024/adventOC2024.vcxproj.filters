@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="day1">
+      <UniqueIdentifier>{25f1521d-6e4e-49be-a425-e561d9cbd257}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="day2">
+      <UniqueIdentifier>{49ea4df5-8e8d-4a5c-9c48-1d574b3aca85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="day3">
+      <UniqueIdentifier>{8f02dca2-e8c9-46a8-be18-592cadd257c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="day4">
+      <UniqueIdentifier>{c377136a-314f-4cda-899e-fb822f6e636d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="day5">
+      <UniqueIdentifier>{7d6a8ae4-904c-46ca-9705-3eddb50db0b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="day6">
+      <UniqueIdentifier>{66422f04-181b-4b7f-a739-29485edb769f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="day7">
+      <UniqueIdentifier>{a41552b5-62e9-4ee6-9ab5-5703a4d53193}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="day1input.txt">
+      <Filter>day1</Filter>
+    </Text>
+    <Text Include="testInput.txt">
+      <Filter>day1</Filter>
+    </Text>
+    <Text Include="day2input.txt">
+      <Filter>day2</Filter>
+    </Text>
+    <Text Include="testInputDay2.txt">
+      <Filter>day2</Filter>
+    </Text>
+    <Text Include="day3input.txt">
+      <Filter>day3</Filter>
+    </Text>
+    <Text Include="testInputDay3.txt">
+      <Filter>day3</Filter>
+    </Text>
+    <Text Include="day4input.txt">
+      <Filter>day4</Filter>
+    </Text>
+    <Text Include="testInputDay4.txt">
+      <Filter>day4</Filter>
+    </Text>
+    <Text Include="day5input.txt">
+      <Filter>day5</Filter>
+    </Text>
+    <Text Include="testInputDay5.txt">
+      <Filter>day5</Filter>
+    </Text>
+    <Text Include="day6input.txt">
+      <Filter>day6</Filter>
+    </Text>
+    <Text Include="testInputDay6.txt">
+      <Filter>day6</Filter>
+    </Text>
+    <Text Include="day7input.txt">
+      <Filter>day7</Filter>
+    </Text>
+    <Text Include="testInputDay7.txt">
+      <Filter>day7</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="day1.cpp">
+      <Filter>day1</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="day2.cpp">
+      <Filter>day2</Filter>
+    </ClCompile>
+    <ClCompile Include="day3.cpp">
+      <Filter>day3</Filter>
+    </ClCompile>
+    <ClCompile Include="day4.cpp">
+      <Filter>day4</Filter>
+    </ClCompile>
+    <ClCompile Include="day5.cpp">
+      <Filter>day5</Filter>
+    </ClCompile>
+    <ClCompile Include="day6.cpp">
+      <Filter>day6</Filter>
+    </ClCompile>
+    <ClCompile Include="day7.cpp">
+      <Filter>day7</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="day1.h">
+      <Filter>day1</Filter>
+    </ClInclude>
+    <ClInclude Include="day2.h">
+      <Filter>day2</Filter>
+    </ClInclude>
+    <ClInclude Include="day3.h">
+      <Filter>day3</Filter>
+    </ClInclude>
+    <ClInclude Include="day4.h">
+      <Filter>day4</Filter>
+    </ClInclude>
+    <ClInclude Include="day5.h">
+      <Filter>day5</Filter>
+    </ClInclude>
+    <ClInclude Include="day6.h">
+      <Filter>day6</Filter>
+    </ClInclude>
+    <ClInclude Include="day7.h">
+      <Filter>day7</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
