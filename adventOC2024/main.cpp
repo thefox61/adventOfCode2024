@@ -6,6 +6,7 @@
 #include "day5.h"
 #include "day6.h"
 #include "day7.h"
+#include "day8.h"
 
 #include <iostream>
 
@@ -13,15 +14,13 @@
 int main()
 {
 	
-	std::vector<std::pair<unsigned long long, std::vector<int>>> equations = loadEquations("day7input.txt");
-
-	unsigned long long result = calibrationSumTwo(equations);
+	std::vector<std::vector<char>> map = loadMap("day8input.txt");
 	
+
+	int result = countAntinodesTwo(map);
+
 	std::cout << result << std::endl;
 
-	
-
-	bool breakpoint = false;
 
 	return 0;
 }
