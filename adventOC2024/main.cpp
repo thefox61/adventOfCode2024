@@ -13,9 +13,13 @@
 int main()
 {
 	
-	std::vector<std::pair<int, std::vector<int>>> equations = loadEquations("testInputDay7.txt");
+	std::vector<std::pair<unsigned long long, std::vector<int>>> equations = loadEquations("day7input.txt");
+
+	unsigned long long result = calibrationSumTwo(equations);
 	
-	//std::cout << result << std::endl;
+	std::cout << result << std::endl;
+
+	
 
 	bool breakpoint = false;
 
