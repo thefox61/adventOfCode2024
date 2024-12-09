@@ -7,6 +7,7 @@
 #include "day6.h"
 #include "day7.h"
 #include "day8.h"
+#include "day9.h"
 
 #include <iostream>
 
@@ -14,13 +15,13 @@
 int main()
 {
 	
-	std::vector<std::vector<char>> map = loadMap("day8input.txt");
-	
+	std::vector<int> file_system = loadFileSystem("day9input.txt");
 
-	int result = countAntinodesTwo(map);
+	long long result = computeChecksumTwo(file_system);
 
 	std::cout << result << std::endl;
 
+	bool breakpoint = false;
 
 	return 0;
 }

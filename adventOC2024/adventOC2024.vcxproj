@@ -135,6 +135,7 @@
     <Text Include="day6input.txt" />
     <Text Include="day7input.txt" />
     <Text Include="day8input.txt" />
+    <Text Include="day9input.txt" />
     <Text Include="testInput.txt" />
     <Text Include="testInputDay2.txt" />
     <Text Include="testInputDay3.txt" />
@@ -143,6 +144,7 @@
     <Text Include="testInputDay6.txt" />
     <Text Include="testInputDay7.txt" />
     <Text Include="testInputDay8.txt" />
+    <Text Include="testInputDay9.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="day1.cpp" />
@@ -153,6 +155,7 @@
     <ClCompile Include="day6.cpp" />
     <ClCompile Include="day7.cpp" />
     <ClCompile Include="day8.cpp" />
+    <ClCompile Include="day9.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +167,7 @@
     <ClInclude Include="day6.h" />
     <ClInclude Include="day7.h" />
     <ClInclude Include="day8.h" />
+    <ClInclude Include="day9.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="testInputDay8v2.txt" />
