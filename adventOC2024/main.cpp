@@ -8,6 +8,7 @@
 #include "day7.h"
 #include "day8.h"
 #include "day9.h"
+#include "day10.h"
 
 #include <iostream>
 
@@ -15,13 +16,14 @@
 int main()
 {
 	
-	fileSystem file_system = loadFileSystemBlocks("testInputDay9.txt");
+	std::vector < std::vector<int>> topo_map = loadTopoMap("day10input.txt");
 
-	compactFileSystem(file_system);
+	int result = countTrails(topo_map);
+	
 
 	// long long result = computeChecksumTwo(file_system);
 
-	// std::cout << result << std::endl;
+	std::cout << result << std::endl;
 
 	bool breakpoint = false;
 
