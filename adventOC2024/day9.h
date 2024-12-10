@@ -35,17 +35,34 @@ struct fileBlock
 		start_index = -1;
 	}
 
-	unsigned int id;
+	int id;
 
 	int size;
 
 	blocktype type;
 
 	int start_index;
+
+	bool updated = false;
+
+	fileBlock* next = NULL;
+	fileBlock* prev = NULL;
 	
 };
 
+struct fileSystem
+{
+	fileBlock* start = NULL;
+	fileBlock* end = NULL;
+
+	int num_files = 0;
+
+	int num_blocks = 0;
+};
+
 std::vector<int> loadFileSystem(std::string input_file);
+
+fileSystem loadFileSystemBlocks(std::string input_file);
 
 std::vector<int> sparseConversion(std::vector<int>& file_system);
 
@@ -54,6 +71,8 @@ std::vector<int> sparseConversionTwo(std::vector<int>& file_system, std::map<int
 std::vector<int> compactFileSystem(std::vector<int>& sparse_file_system);
 
 std::vector<int> compactFileSystemTwo(std::vector<int>& sparse_file_system, std::map<int, fileBlock>& free_blocks, std::vector<fileBlock>& file_blocks);
+
+void compactFileSystem(fileSystem& file_system);
 
 
 long long computeChecksum(std::vector<int>& file_system);

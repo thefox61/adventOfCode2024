@@ -1,5 +1,7 @@
 #include "day9.h"
 
+// answer: 6415666220005
+
 std::vector<int> loadFileSystem(std::string input_file)
 {
 
@@ -18,6 +20,70 @@ std::vector<int> loadFileSystem(std::string input_file)
 	}
     return file_system;
 }
+
+fileSystem loadFileSystemBlocks(std::string input_file)
+{
+
+
+	std::ifstream the_file(input_file);
+
+	std::string temp;
+
+	int count = 0;
+
+	fileBlock* start = NULL;
+
+	fileBlock* last_block = NULL;
+
+	while (std::getline(the_file, temp))
+	{
+		for (int i = 0; i < temp.length(); i++)
+		{
+			if (i % 2 == 0)
+			{
+				//file_system.emplace_back(count, temp[i] - '0', fileBlock::blocktype::file, i);
+				if (!last_block)
+				{
+					last_block = new fileBlock(count, temp[i] - '0', fileBlock::blocktype::file, i);
+
+					start = last_block;
+				}
+				else
+				{
+					fileBlock* new_block = new fileBlock(count, temp[i] - '0', fileBlock::blocktype::file, i);
+
+					last_block->next = new_block;
+
+					new_block->prev = last_block;
+
+					last_block = new_block;
+				}
+				count++;
+			}
+			else
+			{
+				fileBlock* new_block = new fileBlock(-1, temp[i] - '0', fileBlock::blocktype::free, i);
+
+				last_block->next = new_block;
+
+				new_block->prev = last_block;
+
+				last_block = new_block;
+			}	
+		}
+
+	}
+
+	fileSystem file_system;
+	file_system.start = start;
+	file_system.end = last_block;
+	file_system.num_files = count;
+
+
+	return file_system;
+}
+
+
 
 std::vector<int> sparseConversion(std::vector<int>& file_system)
 {
@@ -159,6 +225,91 @@ std::vector<int> compactFileSystemTwo(std::vector<int>& sparse_file_system, std:
 	}
 
 	return sparse_file_system;
+}
+
+void compactFileSystem(fileSystem& file_system)
+{
+	// for a given file size(0 - 9), last index a large enough block was found (to prevent redundant searching)
+	std::vector<fileBlock*> start_search_index(10, file_system.start);
+
+
+	fileBlock* curr_free_block = NULL;
+	fileBlock* curr_file_block = file_system.end;
+
+	int count = 0;
+
+	// ensure we start at a file
+	while (curr_file_block->type == fileBlock::blocktype::free)
+	{
+		curr_file_block = curr_file_block->prev;
+	}
+
+
+	while (count < file_system.num_files && curr_file_block)
+	{
+		
+		fileBlock* search_block = start_search_index[curr_file_block->size];
+
+		while (search_block->type != fileBlock::blocktype::free || search_block->size < curr_file_block->size)
+		{
+			if (!search_block->next || search_block->next == curr_file_block)
+			{
+				search_block = NULL;
+				break;
+			}
+			search_block = search_block->next;
+		}
+
+		if(!search_block)
+		{
+			curr_file_block->updated = true;
+			curr_file_block = curr_file_block->prev;
+
+			// find next file
+			while (curr_file_block && (curr_file_block->type == fileBlock::blocktype::free || curr_file_block->updated))
+			{
+
+				curr_file_block = curr_file_block->prev;
+			}
+			count++;
+			continue;
+		}
+
+		// determine if this fills the free block
+		if (search_block->size - curr_file_block->size > 0)
+		{
+			fileBlock* new_block = new fileBlock(count, search_block->size - curr_file_block->size, fileBlock::blocktype::free, 0);
+
+			search_block->next->prev = new_block;
+
+			new_block->next = search_block->next;
+
+			search_block->next = new_block;
+
+			new_block->prev = search_block;
+		}
+
+		search_block->size = curr_file_block->size;
+		search_block->type = fileBlock::blocktype::file;
+		search_block->id = curr_file_block->id;
+		search_block->updated = true;
+
+		curr_file_block->type = fileBlock::blocktype::free;
+		curr_file_block->id = -1;
+
+		count++;
+		start_search_index[curr_file_block->size] = search_block;
+
+		curr_file_block = curr_file_block->prev;
+
+		// find next file
+		while (curr_file_block && (curr_file_block->type == fileBlock::blocktype::free || curr_file_block->updated))
+		{
+			curr_file_block = curr_file_block->prev;
+		}
+	}
+
+
 }
 
 long long computeChecksum(std::vector<int>& file_system)

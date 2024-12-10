@@ -15,11 +15,13 @@
 int main()
 {
 	
-	std::vector<int> file_system = loadFileSystem("day9input.txt");
+	fileSystem file_system = loadFileSystemBlocks("testInputDay9.txt");
 
-	long long result = computeChecksumTwo(file_system);
+	compactFileSystem(file_system);
 
-	std::cout << result << std::endl;
+	// long long result = computeChecksumTwo(file_system);
+
+	// std::cout << result << std::endl;
 
 	bool breakpoint = false;
 
