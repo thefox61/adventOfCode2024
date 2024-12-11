@@ -247,9 +247,10 @@ void compactFileSystem(fileSystem& file_system)
 
 	while (count < file_system.num_files && curr_file_block)
 	{
-		
+		// search starts from where we left off for a file of this size
 		fileBlock* search_block = start_search_index[curr_file_block->size];
 
+		// find first block large enough to fit the current file
 		while (search_block->type != fileBlock::blocktype::free || search_block->size < curr_file_block->size)
 		{
 			if (!search_block->next || search_block->next == curr_file_block)
@@ -257,9 +258,15 @@ void compactFileSystem(fileSystem& file_system)
 				search_block = NULL;
 				break;
 			}
+			if (search_block->type == fileBlock::blocktype::file && search_block->size == curr_file_block->size)
+			{
+				search_block->updated = true;
+			}
+
 			search_block = search_block->next;
 		}
 
+		// if one doesn't exist, move to next file
 		if(!search_block)
 		{
 			curr_file_block->updated = true;
@@ -275,7 +282,7 @@ void compactFileSystem(fileSystem& file_system)
 			continue;
 		}
 
-		// determine if this fills the free block
+		// determine if this fills the free block, insert new block if not
 		if (search_block->size - curr_file_block->size > 0)
 		{
 			fileBlock* new_block = new fileBlock(count, search_block->size - curr_file_block->size, fileBlock::blocktype::free, 0);
@@ -289,6 +296,7 @@ void compactFileSystem(fileSystem& file_system)
 			new_block->prev = search_block;
 		}
 
+		// update search_block and file_block types since we are moving the data
 		search_block->size = curr_file_block->size;
 		search_block->type = fileBlock::blocktype::file;
 		search_block->id = curr_file_block->id;
@@ -300,9 +308,8 @@ void compactFileSystem(fileSystem& file_system)
 		count++;
 		start_search_index[curr_file_block->size] = search_block;
 
-		curr_file_block = curr_file_block->prev;
-
 		// find next file
+		curr_file_block = curr_file_block->prev;	
 		while (curr_file_block && (curr_file_block->type == fileBlock::blocktype::free || curr_file_block->updated))
 		{
 			curr_file_block = curr_file_block->prev;
@@ -360,4 +367,30 @@ long long computeChecksumTwo(std::vector<int>& file_system)
 	bool breakpoint = false;
 
 	return check_sum;
+}
+
+long long computeChecksum(fileSystem& file_system)
+{
+	int index = 0;
+
+	long long checksum = 0;
+
+	fileBlock* curr_block = file_system.start;
+
+	while (curr_block)
+	{
+		if (curr_block->type == fileBlock::blocktype::file)
+		{
+			for (int i = index; i < index + curr_block->size; i++)
+			{
+				checksum += i * curr_block->id;
+			}
+		}
+
+		index += curr_block->size;
+		curr_block = curr_block->next;
+
+	}
+
+	return checksum;
 }

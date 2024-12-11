@@ -79,6 +79,8 @@ long long computeChecksum(std::vector<int>& file_system);
 
 long long computeChecksumTwo(std::vector<int>& file_system);
 
+long long computeChecksum(fileSystem& file_system);
+
 
 
 

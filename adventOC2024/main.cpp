@@ -16,12 +16,13 @@
 int main()
 {
 	
-	std::vector < std::vector<int>> topo_map = loadTopoMap("day10input.txt");
+	fileSystem file_system = loadFileSystemBlocks("day9input.txt");
 
-	int result = countTrails(topo_map);
+
+	compactFileSystem(file_system);
 	
 
-	// long long result = computeChecksumTwo(file_system);
+	long long result = computeChecksum(file_system);
 
 	std::cout << result << std::endl;
 
