@@ -84,14 +84,14 @@ void blink(std::unordered_map<long long, long long>& stones, std::unordered_map<
 			}
 			else
 			{
-				next_values[it->first].push_back(it->first * 2048);
+				next_values[it->first].push_back(it->first * 2024);
 				// stones[i] *= 2024;
 			}
 		}
 
 		for (int i = 0; i < next_values[it->first].size(); i++)
 		{
-			stones_updated[next_values[it->first][i]]++;
+			stones_updated[next_values[it->first][i]] += it->second;
 		}
 
 		it++;
@@ -102,12 +102,34 @@ void blink(std::unordered_map<long long, long long>& stones, std::unordered_map<
 
 long long blinks(std::vector<long long>& stones, int num_blinks)
 {
-	for (int i = 0; i < num_blinks; i++)
+	std::unordered_map<long long, long long> stones_map;
+	std::unordered_map<long long, std::vector<long long>> known_values;
+
+	for (int i = 0; i < stones.size(); i++)
 	{
-		blink(stones);
+		stones_map[stones[i]]++;
 	}
 
-	return stones.size();
+
+	for (int i = 0; i < num_blinks; i++)
+	{
+		blink(stones_map, known_values);
+	}
+
+
+	std::unordered_map<long long, long long>::iterator stones_it = stones_map.begin();
+
+	long long result = 0;
+
+	while (stones_it != stones_map.end())
+	{
+		result += stones_it->second;
+
+		stones_it++;
+	}
+
+
+	return result;
 }
 long long blinks2(std::vector<long long>& stones, int num_blinks)
 {

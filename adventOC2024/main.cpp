@@ -19,7 +19,7 @@ int main()
 	std::vector<long long> stones = loadStones("day11input.txt");
 	
 
-	long long result = blinks2(stones, 75);
+	long long result = blinks(stones, 75);
 
 	std::cout << result << std::endl;
 
