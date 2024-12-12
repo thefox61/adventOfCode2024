@@ -47,7 +47,6 @@ int calculateValue(std::string input_file)
 		if (do_mul)
 		{
 			std::string instruction = mul_match.str(0);
-			std::cout << instruction << std::endl;
 
 			int open_bracket = instruction.find_first_of("(");
 			int close_bracket = instruction.find_first_of(")");

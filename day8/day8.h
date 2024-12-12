@@ -8,6 +8,7 @@
 #include <string>
 #include <unordered_map>
 
+std::vector<std::vector<char>> loadMap(std::string input_file);
 
 std::unordered_map<char, std::vector<std::pair<int, int>>> getAntennaFrequencies(std::vector<std::vector<char>>& map);
 

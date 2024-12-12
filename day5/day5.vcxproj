@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{d76d4418-a982-44ac-91b3-f6565083fe99}</ProjectGuid>
-    <RootNamespace>adventOC2024</RootNamespace>
+    <ProjectGuid>{3012a2e0-a914-428a-944e-64ad8605e910}</ProjectGuid>
+    <RootNamespace>day5</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,58 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="day10input.txt" />
-    <Text Include="day11input.txt" />
-    <Text Include="day1input.txt" />
-    <Text Include="day2input.txt" />
-    <Text Include="day3input.txt" />
-    <Text Include="day4input.txt" />
-    <Text Include="day5input.txt" />
-    <Text Include="day6input.txt" />
-    <Text Include="day7input.txt" />
-    <Text Include="day8input.txt" />
-    <Text Include="day9input.txt" />
-    <Text Include="testInput.txt" />
-    <Text Include="testInputDay10.txt" />
-    <Text Include="testInputDay11.txt" />
-    <Text Include="testInputDay2.txt" />
-    <Text Include="testInputDay3.txt" />
-    <Text Include="testInputDay4.txt" />
-    <Text Include="testInputDay5.txt" />
-    <Text Include="testInputDay6.txt" />
-    <Text Include="testInputDay7.txt" />
-    <Text Include="testInputDay8.txt" />
-    <Text Include="testInputDay9.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="day1.cpp" />
-    <ClCompile Include="day10.cpp" />
-    <ClCompile Include="day11.cpp" />
-    <ClCompile Include="day2.cpp" />
-    <ClCompile Include="day3.cpp" />
-    <ClCompile Include="day4.cpp" />
     <ClCompile Include="day5.cpp" />
-    <ClCompile Include="day6.cpp" />
-    <ClCompile Include="day7.cpp" />
-    <ClCompile Include="day8.cpp" />
-    <ClCompile Include="day9.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="day1.h" />
-    <ClInclude Include="day10.h" />
-    <ClInclude Include="day11.h" />
-    <ClInclude Include="day2.h" />
-    <ClInclude Include="day3.h" />
-    <ClInclude Include="day4.h" />
     <ClInclude Include="day5.h" />
-    <ClInclude Include="day6.h" />
-    <ClInclude Include="day7.h" />
-    <ClInclude Include="day8.h" />
-    <ClInclude Include="day9.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="testInputDay8v2.txt" />
+    <Text Include="day5input.txt" />
+    <Text Include="testInputDay5.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

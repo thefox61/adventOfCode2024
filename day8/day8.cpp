@@ -173,3 +173,28 @@ char getAntennaMapIndex(int i, int j, std::vector<std::vector<char>>& map)
 
     return map[i][j];
 }
+
+
+std::vector<std::vector<char>> loadMap(std::string input_file)
+{
+    std::ifstream the_file(input_file);
+    std::string temp;
+
+    std::vector<std::vector<char>> map;
+
+    while (std::getline(the_file, temp))
+    {
+        std::vector<char> new_row;
+        for (int i = 0; i < temp.length(); i++)
+        {
+            new_row.emplace_back(temp[i]);
+            if (temp[i] == '^')
+            {
+                std::cout << "Guard starting position: " << map.size() << " " << i << std::endl;
+            }
+        }
+        map.emplace_back(new_row);
+    }
+
+    return map;
+}
