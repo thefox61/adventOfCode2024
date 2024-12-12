@@ -9,20 +9,17 @@
 #include "day8.h"
 #include "day9.h"
 #include "day10.h"
+#include "day11.h"
 
 #include <iostream>
 
 
 int main()
 {
-	
-	fileSystem file_system = loadFileSystemBlocks("day9input.txt");
-
-
-	compactFileSystem(file_system);
+	std::vector<long long> stones = loadStones("day11input.txt");
 	
 
-	long long result = computeChecksum(file_system);
+	long long result = blinks2(stones, 75);
 
 	std::cout << result << std::endl;
 

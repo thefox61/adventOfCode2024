@@ -43,6 +43,9 @@
     <Filter Include="day10">
       <UniqueIdentifier>{15d28ee6-e107-4902-b915-c063dec13efc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="day11">
+      <UniqueIdentifier>{3b8cbc8e-dce1-4933-b681-8867c75a4144}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="day1input.txt">
@@ -105,6 +108,12 @@
     <Text Include="testInputDay10.txt">
       <Filter>day10</Filter>
     </Text>
+    <Text Include="day11input.txt">
+      <Filter>day11</Filter>
+    </Text>
+    <Text Include="testInputDay11.txt">
+      <Filter>day11</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="day1.cpp">
@@ -140,6 +149,9 @@
     <ClCompile Include="day10.cpp">
       <Filter>day10</Filter>
     </ClCompile>
+    <ClCompile Include="day11.cpp">
+      <Filter>day11</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="day1.h">
@@ -171,6 +183,9 @@
     </ClInclude>
     <ClInclude Include="day10.h">
       <Filter>day10</Filter>
+    </ClInclude>
+    <ClInclude Include="day11.h">
+      <Filter>day11</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
