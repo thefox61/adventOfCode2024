@@ -10,7 +10,6 @@ Website: [Advent of Code](https://adventofcode.com/)
 ## Repository Structure
 This repository contains my solutions for the puzzles in **Advent of Code 2024**. The solutions are organized by day, with each day corresponding to a separate folder within a Visual Studio solution.
 
-```
 
 ## Features
 - **Daily Solutions**: Each day’s solution is implemented in C++.
