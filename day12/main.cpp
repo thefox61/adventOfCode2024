@@ -13,7 +13,8 @@ int main()
 	long long bulk_cost = calculateFenceCostBulk(root_note, graph);
 
 	std::cout << "Advent of Code Day 12" << std::endl;
-	std::cout << "Bulk cost" << bulk_cost << std::endl;
+
+	std::cout << "Bulk cost: " << bulk_cost << std::endl;
 
 
 	return 0;

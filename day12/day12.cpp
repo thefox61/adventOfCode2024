@@ -131,9 +131,12 @@ long long calculateAreaCostPerimeter(node* starting_node)
 
 	long sides = 0;
 
+	// row maps key is the row index (-1 is top and length + 1 is bottom), vector stores all columns that have an edge at this index
 	std::unordered_map<int, std::vector<int>> row_sides_top;
-	std::unordered_map<int, std::vector<int>> column_sides_left;
 	std::unordered_map<int, std::vector<int>> row_sides_bottom;
+
+	// column maps key is the column index (-1 is top and length + 1 is bottom), vector stores all rows that have an edge at this index
+	std::unordered_map<int, std::vector<int>> column_sides_left;
 	std::unordered_map<int, std::vector<int>> column_sides_right;
 
 	if (!starting_node->processed)
@@ -141,116 +144,15 @@ long long calculateAreaCostPerimeter(node* starting_node)
 		calculateSidesAndArea(starting_node, row_sides_top, row_sides_bottom, column_sides_left, column_sides_right, area);
 	}
 
-	std::unordered_map<int, std::vector<int>>::iterator row_top_it = row_sides_top.begin();
-	std::unordered_map<int, std::vector<int>>::iterator row_bottom_it = row_sides_bottom.begin();
-	std::unordered_map<int, std::vector<int>>::iterator column_left_it = column_sides_left.begin();
-	std::unordered_map<int, std::vector<int>>::iterator column_right_it = column_sides_right.begin();
+	// iterate through all maps
+	// for each row/column check how many consecutive sequences of indexes are there, each one corresponds to a side
 
-	while (row_top_it != row_sides_top.end())
-	{
-		std::vector<int>& curr_row = row_top_it->second;
+	sides += countSides(row_sides_top);
+	sides += countSides(row_sides_bottom);
+	sides += countSides(column_sides_left);
+	sides += countSides(column_sides_right);
 
-		if (curr_row.empty())
-		{
-			continue;
-		}
-
-		std::sort(curr_row.begin(), curr_row.end());
-
-		int last = curr_row[0];
-		sides++;
-
-		for (int i = 1; i < curr_row.size(); i++)
-		{
-			if (curr_row[i] != last + 1)
-			{
-				sides++;
-			}
-			last = curr_row[i];
-		}
-
-		row_top_it++;
-	}
-
-	while (row_bottom_it != row_sides_bottom.end())
-	{
-		std::vector<int>& curr_row = row_bottom_it->second;
-
-		if (curr_row.empty())
-		{
-			continue;
-		}
-
-		std::sort(curr_row.begin(), curr_row.end());
-
-		int last = curr_row[0];
-		sides++;
-
-		for (int i = 1; i < curr_row.size(); i++)
-		{
-			if (curr_row[i] != last + 1)
-			{
-				sides++;
-			}
-			last = curr_row[i];
-		}
-
-		row_bottom_it++;
-	}
-
-	while (column_left_it != column_sides_left.end())
-	{
-		std::vector<int>& curr_column = column_left_it->second;
-
-		if (curr_column.empty())
-		{
-			continue;
-		}
-
-		std::sort(curr_column.begin(), curr_column.end());
-
-		int last = curr_column[0];
-		sides++;
-
-		for (int i = 1; i < curr_column.size(); i++)
-		{
-			if (curr_column[i] != last + 1)
-			{
-				sides++;
-			}
-			last = curr_column[i];
-		}
-
-		column_left_it++;
-	}
-
-	while (column_right_it != column_sides_right.end())
-	{
-		std::vector<int>& curr_column = column_right_it->second;
-
-		if (curr_column.empty())
-		{
-			continue;
-		}
-
-		std::sort(curr_column.begin(), curr_column.end());
-
-		int last = curr_column[0];
-		sides++;
-
-		for (int i = 1; i < curr_column.size(); i++)
-		{
-			if (curr_column[i] != last + 1)
-			{
-				sides++;
-			}
-			last = curr_column[i];
-		}
-
-		column_right_it++;
-	}
-
-
+	
 	cost = area * sides;
 
 	return cost;
@@ -264,13 +166,10 @@ void calculatePerimeterAndArea(node* node, long& perimeter, long& area)
 
 	if (node->up && node->up->value == node->value)
 	{
-		//areaCost += calculateAreaCost(starting_node->up, perimeter, area);
-
 		if (!node->up->processed)
 		{
 			calculatePerimeterAndArea(node->up, perimeter, area);
 		}
-		
 	}
 	else
 	{
@@ -279,13 +178,10 @@ void calculatePerimeterAndArea(node* node, long& perimeter, long& area)
 
 	if (node->down && node->down->value == node->value)
 	{
-		//areaCost += calculateAreaCost(starting_node->up, perimeter, area);
-
 		if (!node->down->processed)
 		{
 			calculatePerimeterAndArea(node->down, perimeter, area);
 		}
-
 	}
 	else
 	{
@@ -294,13 +190,10 @@ void calculatePerimeterAndArea(node* node, long& perimeter, long& area)
 
 	if (node->left && node->left->value == node->value)
 	{
-		//areaCost += calculateAreaCost(starting_node->up, perimeter, area);
-
 		if (!node->left->processed)
 		{
 			calculatePerimeterAndArea(node->left, perimeter, area);
 		}
-
 	}
 	else
 	{
@@ -309,13 +202,10 @@ void calculatePerimeterAndArea(node* node, long& perimeter, long& area)
 
 	if (node->right && node->right->value == node->value)
 	{
-		//areaCost += calculateAreaCost(starting_node->up, perimeter, area);
-
 		if (!node->right->processed)
 		{
 			calculatePerimeterAndArea(node->right, perimeter, area);
 		}
-
 	}
 	else
 	{
@@ -332,24 +222,18 @@ void calculateSidesAndArea(node* node, std::unordered_map<int, std::vector<int>>
 
 	if (node->up && node->up->value == node->value)
 	{
-		//areaCost += calculateAreaCost(starting_node->up, perimeter, area);
-
 		if (!node->up->processed)
 		{
 			calculateSidesAndArea(node->up, row_sides_top, row_sides_bottom, column_sides_left, column_sides_right, area);
 		}
-
 	}
 	else
 	{
-		//perimeter++;
 		row_sides_top[node->row - 1].emplace_back(node->column);
 	}
 
 	if (node->down && node->down->value == node->value)
 	{
-		//areaCost += calculateAreaCost(starting_node->up, perimeter, area);
-
 		if (!node->down->processed)
 		{
 			calculateSidesAndArea(node->down, row_sides_top, row_sides_bottom, column_sides_left, column_sides_right, area);
@@ -358,30 +242,23 @@ void calculateSidesAndArea(node* node, std::unordered_map<int, std::vector<int>>
 	}
 	else
 	{
-		//perimeter++;
 		row_sides_bottom[node->row + 1].emplace_back(node->column);
 	}
 
 	if (node->left && node->left->value == node->value)
 	{
-		//areaCost += calculateAreaCost(starting_node->up, perimeter, area);
-
 		if (!node->left->processed)
 		{
 			calculateSidesAndArea(node->left, row_sides_top, row_sides_bottom, column_sides_left, column_sides_right, area);
 		}
-
 	}
 	else
 	{
-		//perimeter++;
 		column_sides_left[node->column - 1].emplace_back(node->row);
 	}
 
 	if (node->right && node->right->value == node->value)
 	{
-		//areaCost += calculateAreaCost(starting_node->up, perimeter, area);
-
 		if (!node->right->processed)
 		{
 			calculateSidesAndArea(node->right, row_sides_top, row_sides_bottom, column_sides_left, column_sides_right, area);
@@ -390,8 +267,41 @@ void calculateSidesAndArea(node* node, std::unordered_map<int, std::vector<int>>
 	}
 	else
 	{
-		//perimeter++;
 		column_sides_right[node->column + 1].emplace_back(node->row);
 	}
 
+}
+
+long long countSides(std::unordered_map<int, std::vector<int>>& sides_map)
+{
+	long long sides = 0;
+	std::unordered_map<int, std::vector<int>>::iterator sides_it = sides_map.begin();
+
+	while (sides_it != sides_map.end())
+	{
+		std::vector<int>& curr_index = sides_it->second;
+
+		if (curr_index.empty())
+		{
+			continue;
+		}
+
+		std::sort(curr_index.begin(), curr_index.end());
+
+		int last = curr_index[0];
+		sides++;
+
+		for (int i = 1; i < curr_index.size(); i++)
+		{
+			if (curr_index[i] != last + 1)
+			{
+				sides++;
+			}
+			last = curr_index[i];
+		}
+
+		sides_it++;
+	}
+
+	return sides;
 }

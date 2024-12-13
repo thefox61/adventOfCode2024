@@ -49,6 +49,8 @@ void calculatePerimeterAndArea(node* node, long& perimeter, long& area);
 
 void calculateSidesAndArea(node* node, std::unordered_map<int, std::vector<int>>& row_sides_top, std::unordered_map<int, std::vector<int>>& row_sides_bottom, std::unordered_map<int, std::vector<int>>& column_sides_left, std::unordered_map<int, std::vector<int>>& column_sides_right, long& area);
 
+long long countSides(std::unordered_map<int, std::vector<int>>& sides_map);
+
 
 
 
