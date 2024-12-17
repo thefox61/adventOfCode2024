@@ -44,7 +44,9 @@ This repository contains my solutions for the puzzles in **Advent of Code 2024**
 | Day 11| ✅ Completed   |
 | Day 12| ✅ Completed   |
 | Day 13| ✅ Completed   |
-| Day 14| 🕒 In Progress |
+| Day 14| ✅ Completed   |
+| Day 15| ✅ Completed   |
+| Day 16| 🕒 In Progress |
 
 ## Technologies Used
 - **C++**: Main programming language for solving puzzles.
