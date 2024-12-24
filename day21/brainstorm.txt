@@ -1,0 +1,24 @@
+   <   A > A   <   AA  v <   AA ^  >> A  v  AA ^ A  v <   AAA ^  > A
+v<<A^>>AvA^Av<<A^>>AAv<A<A^>>AA<A>vAA^Av<A^>AA<A>Av<A<A^>>AAA<A>vA^A
+
+   <   A > A  v <<   AA >  ^ AA > A  v  AA ^ A   < v  AAA >  ^ A
+<v<A>>^AvA^A<vA<AA>>^AAvA<^A>AAvA^A<vA>^AA<A>A<v<A>A>^AAAvA<^A>A
+
+
+(<vA<AA>>^A) (vAA<^A>A) (<v<A>>^A) (vA^A)  (<vA>^A) (<v<A>^A>A) (A)     (vA^A)  (<v<A>A>^A) (A)     (A)     (vA<^A>A)
+(v<<A)       (>>^A)     (<A)       (>A)    (vA)     (<^A)       (A)     (>A)    (<vA)       (A)     (A)     (>^A)
+(A - <)      (< - A)    (A - ^)    (^ - A) (A - >)  (> - ^)     (^ - ^) (^ - A) (A - v)     (v - v) (v - v) (v - A)
+
+<vA<AA>>^AvAA<^A>A<v<A>>^AvA^A<vA>^A<v<A>^A>AAvA^A<v<A>A>^AAAvA<^A>A
+v<<A>>^A<A>AvA<^AA>A<vAAA>^A
+<A^A>^^AvvvA
+029A
+
+
+pin code
+direction pad 1
+direction pad 2 
+
+(<vA<AA>>^A)
+(v<<A) (<<vA) (<v<A) 
+(A<)  
