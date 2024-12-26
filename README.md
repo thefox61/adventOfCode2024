@@ -55,7 +55,7 @@ This repository contains my solutions for the puzzles in **Advent of Code 2024**
 | Day 22| ✅ Completed   |
 | Day 23| ✅ Completed   |
 | Day 24| ✅ Completed   |
-| Day 25| 🕒 In Progress |
+| Day 25| ✅ Completed   |
 
 ## Technologies Used
 - **C++**: Main programming language for solving puzzles.
